@@ -15,13 +15,14 @@ jobs:
           fetch-depth: 0
       - name: Delete junk lines
         run: | #
-          sed /pingendo/d index.html
-          sed /pingendo/d discord.html
+          sed -i /pingendo/d index.html
+          sed -i /pingendo/d discord.html
       - name: Commit files
         run: | #
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git commit -m "Add changes" -a
+          git add .
+          git commit -m "Add changes"
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:
