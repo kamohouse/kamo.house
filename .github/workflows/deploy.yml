@@ -14,10 +14,10 @@ jobs:
           persist-credentials: false
           fetch-depth: 0
       - name: Create local changes
-        run: |
-          find . -type f -name "*.html" -print0 | xargs -0 sed -i -e '/^\<pingendo/d'
+        run: | #
+          find . -name "*.html" | sed -e /pingendo/d
       - name: Commit files
-        run: |
+        run: | #
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git commit -m "Add changes" -a
