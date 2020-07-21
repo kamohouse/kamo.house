@@ -13,9 +13,10 @@ jobs:
         with: 
           persist-credentials: false
           fetch-depth: 0
-      - name: Create local changes
+      - name: Delete junk lines
         run: | #
-          find . -name "*.html" | sed -e /pingendo/d
+          sed /pingendo/d index.html
+          sed /pingendo/d discord.html
       - name: Commit files
         run: | #
           git config --local user.email "action@github.com"
